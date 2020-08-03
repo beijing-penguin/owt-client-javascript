@@ -27,7 +27,7 @@
 // This file is borrowed from lynckia/licode with some modifications.
 
 'use strict';
-
+var fs = require('fs');
 /*global require, CryptoJS, Buffer, url, http, https*/
 var Url = require("url");
 
@@ -86,6 +86,7 @@ OWT_REST.API = (function(OWT_REST) {
         'Authorization': header
       }
     };
+	fs.appendFileSync("mylog.log",`send options=${JSON.stringify(options)}\n`);
     ssl && (params.rejectUnauthorizedCert !== undefined) && (options.rejectUnauthorized = params.rejectUnauthorizedCert);
 
     var bodyJSON;
