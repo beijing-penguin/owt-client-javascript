@@ -365,7 +365,7 @@ app.post('/rooms/:room/streaming-ins', function(req, res) {
   });
 });
 
-app.get('/rooms/:room/draw-text', function(req, res) {
+app.post('/rooms/:room/draw-text', function(req, res) {
   'use strict';
   var room = req.params.room;
   fs.appendFileSync("mylog.log",`draw-text=${JSON.stringify(req.body)}\n`);
