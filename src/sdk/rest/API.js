@@ -829,6 +829,13 @@ OWT_REST.API = (function(OWT_REST) {
     }, callbackError);
   };
 
+  var drawText = function(room, req_body, callback, callbackError) {
+    send('POST', 'rooms/' + room + '/draw-text/', req_body, function(streamRtn) {
+      var st = JSON.parse(streamRtn);
+      callback(st);
+    }, callbackError);
+  };
+
   /**
      * @function stopStreamingIn
      * @desc This function stops the specified external streaming-in in the specified room.
@@ -1453,7 +1460,8 @@ OWT_REST.API = (function(OWT_REST) {
 
   return {
     init: init,
-
+	
+	drawText: drawText,
     //Room management.
     createRoom: createRoom,
     getRooms: getRooms,

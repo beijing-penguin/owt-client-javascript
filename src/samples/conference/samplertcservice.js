@@ -365,6 +365,17 @@ app.post('/rooms/:room/streaming-ins', function(req, res) {
   });
 });
 
+app.post('/rooms/:room/draw-text', function(req, res) {
+  'use strict';
+  var room = req.params.room;
+
+  icsREST.API.drawText(room, req.body, function(result) {
+    res.send(result);
+  }, function(err) {
+    res.send(err);
+  });
+});
+
 app.delete('/rooms/:room/streaming-ins/:id', function(req, res) {
   'use strict';
   var room = req.params.room,
