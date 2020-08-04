@@ -831,8 +831,7 @@ OWT_REST.API = (function(OWT_REST) {
 
   var drawText = function(room, req_body, callback, callbackError) {
     send('POST', 'rooms/' + room + '/draw-text/', req_body, function(streamRtn) {
-      var st = JSON.parse(streamRtn);
-      callback(st);
+      callback(streamRtn);
     }, callbackError);
   };
 
