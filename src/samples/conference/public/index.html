@@ -29,6 +29,7 @@
 <html>
   <meta charset="utf-8">
   <head>
+	<link rel="shortcut icon" href="#"/>
     <title>Intel&reg; Collaboration Suite for WebRTC Conference Sample</title>
   </head>
 
@@ -45,7 +46,8 @@
     // Load adapter.js on Edge.
     if (window.navigator.userAgent.indexOf("Edge") > -1) {
       const script = document.createElement("script");
-      script.src = 'https://webrtchacks.github.io/adapter/adapter-7.0.0.js';
+      //script.src = 'https://webrtchacks.github.io/adapter/adapter-7.0.0.js';
+	  script.src = 'scripts/adapter-7.0.0.js';
       document.head.appendChild(script);
       script.onload = runSocketIOSample;
     } else {
