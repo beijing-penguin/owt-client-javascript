@@ -120,6 +120,35 @@ app.get('/getUsers/:room', function(req, res) {
   });
 });
 
+var date = new Date();
+app.get('/stress/upload/:stress_log', function(req, res) {
+  var my_data = req.body;
+  var my_stress_log = req.params.stress_log;
+  var my_stress;
+  if(my_data){
+	my_stress = my_data;
+  }else{
+	my_stress = my_stress_log;
+  }
+ 
+ var year = date.getFullYear();
+ var month = date.getMonth()+1;
+ var day = date.getDate();
+ var hour = date.getHours();
+ var minute = date.getMinutes();
+ var second = date.getSeconds();
+  if(my_stress){
+	fs.appendFile("my_stress.log",`${year}-${month}-${day} ${hour}:${minute}:${second} ${my_stress}`+"\n",(err) => {
+		if(err){
+			res.send(err);
+		}else{
+			res.send(1);
+		}
+	});
+  }
+  
+});
+
 app.post('/createToken/', function(req, res) {
   var room = req.body.room || sampleRoom,
     username = req.body.username,
