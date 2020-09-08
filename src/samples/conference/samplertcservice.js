@@ -145,6 +145,8 @@ app.get('/stress/upload/:stress_log', function(req, res) {
 			res.send(1);
 		}
 	});
+  }else{
+	res.send(1);
   }
   
 });
