@@ -125,7 +125,7 @@ app.get('/stress/upload/:stress_log', function(req, res) {
   var my_data = req.body;
   var my_stress_log = req.params.stress_log;
   var my_stress;
-  if(my_data){
+  if(my_data && JSON.stringify(my_data) != "{}"){
 	my_stress = my_data;
   }else{
 	my_stress = my_stress_log;
@@ -137,16 +137,16 @@ app.get('/stress/upload/:stress_log', function(req, res) {
  var hour = date.getHours();
  var minute = date.getMinutes();
  var second = date.getSeconds();
-  if(my_stress){
-	fs.appendFile("my_stress.log",`${year}-${month}-${day} ${hour}:${minute}:${second} ${my_stress}`+"\n",(err) => {
+  if(my_stress && JSON.stringify(my_stress) != "{}"){
+	fs.appendFile("my_stress.log",`${year}-${month}-${day} ${hour}:${minute}:${second} ${my_stress.toString()}`+"\n",(err) => {
 		if(err){
 			res.send(err);
 		}else{
-			res.send(1);
+			res.send(200);
 		}
 	});
   }else{
-	res.send(1);
+	res.send(200);
   }
   
 });
