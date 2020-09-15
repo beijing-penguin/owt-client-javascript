@@ -1271,7 +1271,7 @@ function restStopRecording() {
         roomId,
         recorderId
     } = getRestfulParmas();
-    stopAnalyzing(roomId, recorderId, (resp) => {
+    stopRecording(roomId, recorderId, (resp) => {
         console.log(`stop recording ${recorderId} success: `, resp);
     }, err => {
         console.log('stop recording failed: ', err);
